@@ -108,7 +108,7 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 - Utilizing environment secrets and variables instead of embedding them directly into scripts. For instance, managing credentials and access tokens securely.
 
-- Using separate branches for new features instead of relying on a single branch. 
+- Using separate branches for new features/updates instead of relying on a single branch. 
   
 - Conducting thorough testing to validate functionality before moving to different environments.
   
