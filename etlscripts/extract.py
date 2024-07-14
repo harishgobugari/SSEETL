@@ -1,4 +1,3 @@
-import logging
 import pandas as pd
 import tabula
 import requests
@@ -45,6 +44,22 @@ def extract_charging_points(file_url: str) -> list[pd.DataFrame]:
 
 def extract_vehicles(url: str) -> dict:
     """Extracts vehicle data from the specified API endpoint.
+
+    Args:
+        url: The URL of the API endpoint.
+
+    Returns:
+        A dictionary containing the extracted vehicle data.
+    """
+    # Step 1: Fetch data from the API
+    response = requests.get(url)
+    data = response.json()
+
+    # Step 2: Return the data
+    return data
+
+def extract_population(url: str) -> dict:
+    """Extracts population data from the specified API endpoint.
 
     Args:
         url: The URL of the API endpoint.

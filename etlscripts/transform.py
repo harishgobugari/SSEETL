@@ -1,4 +1,3 @@
-import logging
 import pandas as pd
 from extract import find_column_with_value, value_split
 
@@ -31,6 +30,7 @@ def vehicles_df(data: dict) -> pd.DataFrame:
     # Create DataFrame from combinations and add 'Count' column
     df = pd.DataFrame(combinations, columns=['Statistic', 'Month', 'County', 'Fuel Type'])
     df['Count'] = data['value']
+    # Fill null values with 0
     df['Count'] = df['Count'].fillna(0)
     
     # Split the column 'Month' to Year, Month
@@ -49,7 +49,7 @@ def vehicles_df(data: dict) -> pd.DataFrame:
     # Return DataFrame
     return df
 
-def charging_point_df(data: list[pd.DataFrame], county_names: list) -> pd.DataFrame:
+def charging_points_df(data: list[pd.DataFrame], county_names: list) -> pd.DataFrame:
     """Combines multiple tables containing charging points into a single DataFrame.
 
     Args:
@@ -124,3 +124,54 @@ def charging_point_df(data: list[pd.DataFrame], county_names: list) -> pd.DataFr
 
     # Return the final DataFrame
     return combined_data
+
+
+def population_df(data: dict) -> pd.DataFrame:
+    """Creates a pandas DataFrame from vehicle data extracted from an API response.
+
+    Args:
+        data: A dictionary containing the API response data.
+
+    Returns:
+        A pandas DataFrame with columns: 'Statistic', 'Month', 'Licensing Authority', 'Fuel Type', 'Value'.
+    """
+    
+    # Extract relevant categories from the JSON data
+    years = data['dimension']['TLIST(A1)']['category']['label']
+    counties = data['dimension']['C02779V03348']['category']['label']
+    genders = data['dimension']['C02199V02655']['category']['label']
+
+    # Create a list of all possible combinations of categories
+    combinations = [
+        (year, county, gender)
+        for year in years.values()
+        for county in counties.values()
+        for gender in genders.values()
+
+    ]
+
+    # Create DataFrame from combinations and add 'Population' column
+    df = pd.DataFrame(combinations, columns=['Year', 'County', 'Gender'])
+    df['Population'] = data['value']
+    
+    # Replace "Both sexes" with "Both" in the 'Gender' column
+    df['Gender'] = df['Gender'].replace({"Both sexes": "Both"})
+
+    # Filter out rows where 'County' is "State" and 'Gender' is not "Both"
+    df = df[(df['County'] != "State") & (df['Gender'] == "Both")]
+
+    # Convert 'Year' and 'Population' columns to integers
+    df['Year'] = df['Year'].astype(int)
+    df['Population'] = df['Population'].astype(int)
+
+    # Filter for years greater than or equal to 2000
+    df = df[df['Year'] >= 2000]
+
+    # Drop the 'Gender' column as it is no longer needed
+    df.drop(['Gender'], axis=1, inplace=True)
+
+    # Reset the index of the DataFrame
+    df.reset_index(drop=True, inplace=True)
+
+    # Return the population dataframe
+    return df
