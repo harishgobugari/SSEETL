@@ -16,7 +16,7 @@ def load_vehicle_data_to_csv(data_url:str,file_path:str):
     # loading into csv file
     vehicles_data_df.to_csv(file_path, index=False)
 
-    print(f"vehicles_data_df loaded into csv {file_path}")
+    print(f"vehicles_data_df loaded into csv file: {file_path}")
 
 def load_charging_points_data_to_csv(data_url:str,county_url:str,file_path:str):
     
@@ -34,4 +34,4 @@ def load_charging_points_data_to_csv(data_url:str,county_url:str,file_path:str):
     #loading into csv
     charging_data_df.to_csv(file_path, index=False)
     
-    print(f"charging_data_df loaded into csv {file_path}")
+    print(f"charging_data_df loaded into csv file: {file_path}")
