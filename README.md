@@ -81,3 +81,12 @@ This approach ensures data quality and consistency before further processing or 
 - For the production environment, deployment happens only after deployment to UAT is completed successfully. However, this deployment to production requires manual approval before it can proceed.
 
 - The main.yml for the CI/CD is located in .github/workflows folder
+
+### Best practices include:
+
+- Utilizing environment secrets and variables instead of embedding them directly into scripts. For instance, managing credentials and access tokens securely.
+  
+- Conducting thorough testing to validate functionality before moving to different environments.
+  
+- Implementing approvals and ensuring code reviews are conducted before promoting changes from development to UAT and production environments.
+
