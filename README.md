@@ -100,4 +100,4 @@ This approach ensures data quality and consistency before further processing or 
 
 - Install required packages from requirements.txt file using pip install -r requirements.txt
 
-- Run the main.py file in etlscripts folder and pass file_path of output folder in your device
+- Run the main.py file in etlscripts folder and pass file_path of your output folder in main function
