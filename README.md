@@ -80,3 +80,4 @@ This approach ensures data quality and consistency before further processing or 
 
 - For the production environment, deployment happens only after deployment to UAT is completed successfully. However, this deployment to production requires manual approval before it can proceed.
 
+- The yaml file for the CI/CD is located in .github/workflows folder
