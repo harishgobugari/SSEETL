@@ -88,6 +88,8 @@ This approach ensures data quality and consistency before further processing or 
 ### Best practices include:
 
 - Utilizing environment secrets and variables instead of embedding them directly into scripts. For instance, managing credentials and access tokens securely.
+
+- Using separate branches for new features instead of relying on a single branch. 
   
 - Conducting thorough testing to validate functionality before moving to different environments.
   
