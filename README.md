@@ -95,3 +95,9 @@ This approach ensures data quality and consistency before further processing or 
 - Conducting thorough testing to validate functionality before moving to different environments.
   
 - Implementing approvals and ensuring code reviews are conducted before promoting changes from development to UAT and production environments.
+
+### Running the project
+
+- Install required packages from requirements.txt file using pip install -r requirements.txt
+
+- Run the main.py file in etlscripts folder and pass file_path of output folder in your device
