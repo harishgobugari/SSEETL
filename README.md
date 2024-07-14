@@ -74,7 +74,7 @@ This approach ensures data quality and consistency before further processing or 
 
 ## CI/CD 
 
-- This project uses GitHub for managing different versions of the code and GitHub Actions for automated processes like continuous integration and continuous deployment (CI/CD). There are three main environments set up: development, user acceptance testing (UAT), and production. 
+- This project uses GitHub for managing different versions of the code and GitHub Actions for automated deployment. There are three main environments set up: development, user acceptance testing (UAT), and production. 
 
 - When code changes are pushed to the main branch, the development workflow starts automatically. After a successful deployment to the development environment, the deployment process to the UAT environment begins automatically one minute later. 
 
