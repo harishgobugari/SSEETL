@@ -25,6 +25,11 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 - Locations of charging points in the Republic of Ireland (RoI) and Northern Ireland (NI) are extracted from a PDF document.
 - Source: [Charging point location PDF](https://esb.ie/what-we-do/ecars/charge-point-map)
 
+#### Population Data
+
+- Population in Ireland from 2000 sourced from a REST API.
+- Source: [data.cso.ie](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/FY001/JSON-stat/2.0/en)
+
 ### Data Extraction
 
 #### extract.py
@@ -33,7 +38,8 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
   - Retrieve raw vehicle data from the REST API.
   - Extract county names from the REST API.
   - Extract charging point location data from the PDF.
-  - Perform initial data transformations.
+  - Retrieve raw population data from the REST API.
+  - Data transformations.
 
 ### Data Transformation
 
@@ -44,20 +50,30 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 - Raw vehicle data is retrieved in JSON format with a multi-index structure.
 - Data is converted into a Pandas DataFrame with necessary transformations.
 - **Key Transformations**:
-  - Parse JSON data.
-  - Split columns to extract year and month.
-  - Filter data to include only Irish counties.
-  - Adjust column data types.
+  - Parse JSON data
+  - Split columns to extract year and month
+  - Filter data to include only Irish counties
+  - Adjust column data types
 
 ##### Charging Points Data
 
 - Raw charging points data is extracted as a complex table from a PDF.
 - Data is transformed into a structured format through various processing steps.
 - **Key Transformations**:
-  - Parse PDF tables.
-  - Combine all PDF page tables into a single DataFrame.
-  - Rename column headers.
-  - Extract county names and associated values using custom functions.
+  - Parse PDF tables
+  - Combine all PDF page tables into a single DataFrame
+  - Rename column headers
+  - Extract county names and associated values using custom functions
+
+##### Population Data
+
+- Raw population data is retrieved in JSON format with a multi-index structure.
+- Data is converted into a Pandas DataFrame with necessary transformations.
+- **Key Transformations**:
+  - Parse JSON data
+  - Drop columns not required
+  - Filter data
+  - Adjust column data types
 
 ### Test Cases
 
@@ -67,7 +83,8 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
   - Verify presence of expected values in specific columns.
   - Ensure vehicle count is greater than zero.
   - Validate county names related to the Republic of Ireland (RoI).
-
+  - Ensure Population greater than 0 and year greater than 2000.
+  
   These tests ensure data quality and consistency before further processing or analysis.
 
 ### Data Loading
