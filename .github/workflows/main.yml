@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: DEV
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Deploy to Dev
         run: echo "Deploying to Dev environment"
 
@@ -19,7 +19,7 @@ jobs:
     environment: UAT
     needs: deploy_dev
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Deploy to UAT
         run: echo "Deploying to UAT environment"
 
@@ -28,7 +28,7 @@ jobs:
     environment: PROD
     needs: deploy_uat
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Deploy to Prod
         run: echo "Deploying to Prod environment"
 
