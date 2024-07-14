@@ -1,4 +1,4 @@
-from loading import load_charging_points_data_to_csv, load_vehicle_data_to_csv
+from load import load_charging_points_data_to_csv, load_vehicle_data_to_csv
 
 def main():
     """This is the main function of the script."""
