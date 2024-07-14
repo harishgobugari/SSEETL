@@ -11,69 +11,71 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 - **etlscripts**: All ETL scripts and associated code are contained in this directory.
 - **requirements.txt**: Contains packages used in the project.
 
-## Data Sources and Extraction
+## ETL Process
 
-### Vehicle Data
-
-- Newly registered cars in Ireland from 2021 to 2024 are obtained through a REST API.
-- [data.cso.ie](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/TEM27/JSON-stat/2.0/en)
-
-### Charging Point Data
-
-- Charging point locations for both the Republic of Ireland (RoI) and Northern Ireland (NI) are extracted from a PDF document.
-- [Charging point location PDF](https://esb.ie/what-we-do/ecars/charge-point-map)
-
-## Data Extraction Process
-
-### extract.py
-
-- **Functions**:
-  - Retrieving raw vehicle data from the REST API.
-  - Extracting County names from REST API.
-  - Extracting charging point location data from the PDF.
-  - Initial data transformations.
-
-## Data Transformation
-
-### transform.py
+### Data Sources and Extraction
 
 #### Vehicle Data
 
-- Raw vehicle data is retrieved in JSON format with a multi-index structure.
-- Data is converted into a Pandas DataFrame through necessary transformations.
-- **Key Transformations**:
-  - Parsing the JSON.
-  - Splitting a column to extract year and month.
-  - Filtering data to include only Irish counties.
-  - Adjusting column data types.
+- Data on newly registered cars in Ireland from 2021 to 2024 is sourced from a REST API.
+- Source: [data.cso.ie](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/TEM27/JSON-stat/2.0/en)
 
 #### Charging Point Data
 
-- Raw charging point data is extracted as a complex table from a PDF.
+- Locations of charging points in the Republic of Ireland (RoI) and Northern Ireland (NI) are extracted from a PDF document.
+- Source: [Charging point location PDF](https://esb.ie/what-we-do/ecars/charge-point-map)
+
+### Data Extraction
+
+#### extract.py
+
+- **Functions**:
+  - Retrieve raw vehicle data from the REST API.
+  - Extract county names from the REST API.
+  - Extract charging point location data from the PDF.
+  - Perform initial data transformations.
+
+### Data Transformation
+
+#### transform.py
+
+##### Vehicle Data
+
+- Raw vehicle data is retrieved in JSON format with a multi-index structure.
+- Data is converted into a Pandas DataFrame with necessary transformations.
+- **Key Transformations**:
+  - Parse JSON data.
+  - Split columns to extract year and month.
+  - Filter data to include only Irish counties.
+  - Adjust column data types.
+
+##### Charging Points Data
+
+- Raw charging points data is extracted as a complex table from a PDF.
 - Data is transformed into a structured format through various processing steps.
 - **Key Transformations**:
-  - Parsing the tables
-  - combining all the pdf page tables into single dataframe
-  - Renaming column headers.
-  - Extracting county names and associated values using custom functions.
+  - Parse PDF tables.
+  - Combine all PDF page tables into a single DataFrame.
+  - Rename column headers.
+  - Extract county names and associated values using custom functions.
 
-## Test Cases
+### Test Cases
 
-### testcases.py
+#### testcases.py
 
-- Includes few sample tests to ensure data integrity. These tests verify:
-  - The presence of expected values in specific columns.
-  - The count of vehicles (count greater than zero).
-  - County names related to the Republic of Ireland (RoI).
+- Includes sample tests to ensure data integrity:
+  - Verify presence of expected values in specific columns.
+  - Ensure vehicle count is greater than zero.
+  - Validate county names related to the Republic of Ireland (RoI).
 
-This approach ensures data quality and consistency before further processing or analysis.
+  These tests ensure data quality and consistency before further processing or analysis.
 
-## Data Loading
+### Data Loading
 
-### load.py
+#### load.py
 
-- Upon successful test case validation, the cleaned and transformed dataframes are loaded into a CSV files in the output folder. These files serves as the input for downstream PowerBI analysis.
-
+- After successful test case validation, cleaned and transformed DataFrames are loaded into CSV files in the output folder.
+- These files serve as inputs for downstream analysis in tools like PowerBI.
 
 ## CI/CD 
 
