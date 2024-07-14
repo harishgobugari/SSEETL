@@ -6,23 +6,22 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 ## Project Structure
 
-- **Input**: The pipeline extracts raw data from designated websites. While this folder contains sample input files for reference, they are not used in the process.
-- **Output**: Processed data is saved as output files within this folder upon successful ETL completion.
-- **Scripts**: All ETL scripts and associated code are contained in this directory.
+- **input**: The pipeline extracts raw data from designated websites. While this folder contains sample input files for reference, they are not used in the process.
+- **output**: Processed data is saved as output files within this folder upon successful ETL completion.
+- **etlscripts**: All ETL scripts and associated code are contained in this directory.
 - **requirements.txt**: Contains packages used in the project.
-- **README.md**: Details about the pipeline and project.
 
 ## Data Sources and Extraction
 
 ### Vehicle Data
 
 - Newly registered cars in Ireland from 2021 to 2024 are obtained through a REST API.
-- **Source**: data.cso.ie
+- [data.cso.ie](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/TEM27/JSON-stat/2.0/en)
 
 ### Charging Point Data
 
 - Charging point locations for both the Republic of Ireland (RoI) and Northern Ireland (NI) are extracted from a PDF document.
-- **Source**: Charging point location PDF
+- [Charging point location PDF](https://esb.ie/what-we-do/ecars/charge-point-map)
 
 ## Data Extraction Process
 
