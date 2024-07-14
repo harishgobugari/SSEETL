@@ -27,11 +27,8 @@ Test Cases on Charging data
 
 def test_charging_points_df(df: pd.DataFrame,names: list):
     
-    # Test if all values in the 'Country' column are 'RoI'.
-    assert (df['Country'] == 'RoI').all(), "Country column should contain only 'RoI'"
-    
-    # Check county column values in the list
-    assert df['County'].isin(names).all(), "Fuel Type column values should be in {}".format(names)
-
-
-
+  # Test if all values in the 'Country' column are 'RoI'.
+  assert (df['Country'] == 'RoI').all(), "Country column should contain only 'RoI'"
+  
+  # Check county column values in the list
+  assert df['County'].isin(names).all(), "Fuel Type column values should be in {}".format(names)
