@@ -1,3 +1,4 @@
+import logging
 import pandas as pd
 
 """
@@ -18,7 +19,6 @@ def test_vehicle_df(df:pd.DataFrame):
   
   # Check if the column data type is integer
   assert df["Count"].dtype == 'int64', f"Column 'Count' must be of integer type"
-
 
 """
 Test Cases on Charging data

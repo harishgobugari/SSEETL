@@ -1,3 +1,4 @@
+import logging
 import pandas as pd
 from extract import find_column_with_value, value_split
 
@@ -10,7 +11,7 @@ def vehicles_df(data: dict) -> pd.DataFrame:
     Returns:
         A pandas DataFrame with columns: 'Statistic', 'Month', 'Licensing Authority', 'Fuel Type', 'Value'.
     """
-
+    
     # Extract relevant categories from API response
     statistics = data['dimension']['STATISTIC']['category']['label']
     months = data['dimension']['TLIST(M1)']['category']['label']
@@ -57,6 +58,7 @@ def charging_point_df(data: list[pd.DataFrame], county_names: list) -> pd.DataFr
     Returns:
         A combined pandas DataFrame with columns: 'Country', 'County', 'Latitude', 'Longitude'.
     """
+
     # To extract county name
     def replace_county(value: str) -> str:
         """Replaces the county name in the given value with its standard name.

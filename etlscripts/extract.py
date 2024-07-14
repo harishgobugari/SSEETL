@@ -1,3 +1,4 @@
+import logging
 import pandas as pd
 import tabula
 import requests
@@ -14,6 +15,7 @@ def extract_charging_points(file_url: str) -> list[pd.DataFrame]:
     Returns:
         A list of pandas DataFrame containing the extracted tables from the charging points pdf.
     """
+    
     # Step 1: Fetch the webpage content
     response = requests.get(file_url)
 
@@ -36,7 +38,7 @@ def extract_charging_points(file_url: str) -> list[pd.DataFrame]:
 
     # Step 6: Extract tables from the PDF content
     tables = tabula.read_pdf(pdf_content, pages='all', pandas_options={'header': None}, multiple_tables=True, stream=True)
-
+    
     # Step 6: Retrun the tables
     return tables
 
@@ -50,7 +52,6 @@ def extract_vehicles(url: str) -> dict:
     Returns:
         A dictionary containing the extracted vehicle data.
     """
-
     # Step 1: Fetch data from the API
     response = requests.get(url)
     data = response.json()
