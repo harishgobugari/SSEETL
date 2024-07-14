@@ -1,0 +1,5 @@
+tabula
+jpype1
+pandas
+requests
+bs4
