@@ -20,7 +20,7 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 - Data on newly registered cars in Ireland from 2021 to 2024 is sourced from a REST API.
 - Source: [data.cso.ie](https://ws.cso.ie/public/api.restful/PxStat.Data.Cube_API.ReadDataset/TEM27/JSON-stat/2.0/en)
 
-#### Charging Point Data
+#### Charging Points Data
 
 - Locations of charging points in the Republic of Ireland (RoI) and Northern Ireland (NI) are extracted from a PDF document.
 - Source: [Charging point location PDF](https://esb.ie/what-we-do/ecars/charge-point-map)
