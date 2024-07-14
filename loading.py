@@ -35,7 +35,3 @@ def load_charging_points_data_to_csv(data_url:str,county_url:str,file_path:str):
     charging_data_df.to_csv(file_path, index=False)
     
     print("charging_data_df loaded into csv")
-  
-
-
-
