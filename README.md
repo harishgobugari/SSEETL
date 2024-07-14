@@ -104,7 +104,6 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 - The main.yml is used to trigger simple CI/CD is located in .github/workflows folder. This file can be configured to perform deployments to different cloud services/resources.
 
-
 ### Best practices include:
 
 - Utilizing environment secrets and variables instead of embedding them directly into scripts. For instance, managing credentials and access tokens securely.
