@@ -83,7 +83,8 @@ This approach ensures data quality and consistency before further processing or 
 
 - For the production environment, deployment happens only after deployment to UAT is completed successfully. However, this deployment to production requires manual approval before it can proceed.
 
-- The main.yml is used to trigger the CI/CD is located in .github/workflows folder
+- The main.yml is used to trigger simple CI/CD is located in .github/workflows folder. This file can be configured to perform deployments to different cloud services/resources.
+
 
 ### Best practices include:
 
