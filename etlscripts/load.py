@@ -8,15 +8,15 @@ def load_vehicle_data_to_csv(data_url:str,file_path:str):
     # Vehicle data
     raw_vehicle_data = extract_vehicles(url=data_url)
     vehicles_data_df = vehicles_df(data=raw_vehicle_data)
+    
     # test cases
-
     test_vehicle_df(df=vehicles_data_df)
-    print("All test cases passed for vehicle data")
+    print("All test cases are passed for vehicle data")
     
     # loading into csv file
     vehicles_data_df.to_csv(file_path, index=False)
 
-    print("vehicles_data_df loaded into csv")
+    print(f"vehicles_data_df loaded into csv {file_path}")
 
 def load_charging_points_data_to_csv(data_url:str,county_url:str,file_path:str):
     
@@ -29,9 +29,9 @@ def load_charging_points_data_to_csv(data_url:str,county_url:str,file_path:str):
     
     #test cases
     test_charging_points_df(df=charging_data_df,names=county_name)
-    print("All test cases passed for charging points data")
+    print("All test cases are passed for charging points data")
     
     #loading into csv
     charging_data_df.to_csv(file_path, index=False)
     
-    print("charging_data_df loaded into csv")
+    print(f"charging_data_df loaded into csv {file_path}")

@@ -1,4 +1,3 @@
-from typing import List
 import pandas as pd
 import tabula
 import requests
@@ -6,14 +5,14 @@ from bs4 import BeautifulSoup
 import io
 
 
-def extract_charging_points(file_url: str) -> List[pd.DataFrame]:
-    """Extracts charging point data from a PDF file and converts it to a pandas DataFrame.
+def extract_charging_points(file_url: str) -> list[pd.DataFrame]:
+    """Extracts charging point location data from a PDF file.
 
     Args:
         file_url: The webpage path to the PDF file.
 
     Returns:
-        A list of pandas DataFrame containing the extracted charging point data.
+        A list of pandas DataFrame containing the extracted tables from the charging points pdf.
     """
     # Step 1: Fetch the webpage content
     response = requests.get(file_url)
@@ -35,14 +34,15 @@ def extract_charging_points(file_url: str) -> List[pd.DataFrame]:
     if response.status_code == 200:
         pdf_content = io.BytesIO(response.content)
 
-    # Extract tables from the PDF content
+    # Step 6: Extract tables from the PDF content
     tables = tabula.read_pdf(pdf_content, pages='all', pandas_options={'header': None}, multiple_tables=True, stream=True)
 
+    # Step 6: Retrun the tables
     return tables
 
 
 def extract_vehicles(url: str) -> dict:
-    """Extracts vehicle data from the specified API endpoint and converts it to a pandas DataFrame.
+    """Extracts vehicle data from the specified API endpoint.
 
     Args:
         url: The URL of the API endpoint.
@@ -51,29 +51,36 @@ def extract_vehicles(url: str) -> dict:
         A dictionary containing the extracted vehicle data.
     """
 
-    # Fetch data from the API
+    # Step 1: Fetch data from the API
     response = requests.get(url)
     data = response.json()
 
+    # Step 2: Return the data
     return data
 
+
 def extract_county(url: str) -> list:
-    """Extracts county names from the specified API endpoint and converts it to a pandas DataFrame.
+    """Extracts county names from the specified API endpoint.
 
     Args:
         url: The URL of the API endpoint.
 
     Returns:
-        A dictionary containing the extracted vehicle data.
+        A list containing the county names
     """
+    # Step 1: Fetch the data from API
     response = requests.get(url)
     data = response.json()
+
+    # Step 2: Get county names from the response
     county_names = data['dimension']['C01835V02260']['category']['label']
-    #new_county_names = ["Roscomm" if x == "Roscommon" else x for x in county_names.values()]
+    
+    # Step 3; Return the list
     return list(county_names.values())
 
 
-""""
+"""
+
 some custom functions required for transformations
 
 """

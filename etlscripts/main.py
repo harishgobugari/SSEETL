@@ -7,7 +7,7 @@ def main():
     load_vehicle_data_to_csv(data_url=vehicles_url,file_path='output/vehicles.csv')
 
     charging_points_pdf_url = 'https://esb.ie/what-we-do/ecars/charge-point-map'
-    load_charging_points_data_to_csv(data_url=charging_points_pdf_url,county_url=vehicles_url,file_path='output/charging_loactions.csv')
+    load_charging_points_data_to_csv(data_url=charging_points_pdf_url,county_url=vehicles_url,file_path='output/charging_locations.csv')
   
 
 if __name__ == '__main__':

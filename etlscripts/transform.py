@@ -1,8 +1,7 @@
-from typing import List, Union
 import pandas as pd
 from extract import find_column_with_value, value_split
 
-def vehicles_df(data: dict) -> Union[pd.DataFrame,list]:
+def vehicles_df(data: dict) -> pd.DataFrame:
     """Creates a pandas DataFrame from vehicle data extracted from an API response.
 
     Args:
@@ -28,29 +27,32 @@ def vehicles_df(data: dict) -> Union[pd.DataFrame,list]:
         for fuel in fuel_types.values()
     ]
 
-    # Create DataFrame from combinations and add 'Value' column
+    # Create DataFrame from combinations and add 'Count' column
     df = pd.DataFrame(combinations, columns=['Statistic', 'Month', 'County', 'Fuel Type'])
     df['Count'] = data['value']
     df['Count'] = df['Count'].fillna(0)
     
-    # Split the column
+    # Split the column 'Month' to Year, Month
     df[['Year', 'Month']] = df['Month'].str.split(' ', expand=True)
 
     # Convert Year, Count to integer
     df['Year'] = df['Year'].astype(int)
     df['Count'] = df['Count'].astype(int)
+
+    # Filter out the County - All licensing authorities
     df = df[df['County'] != "All licensing authorities"]
     
     # Filter rows based on column 'Fuel Type'
     df = df[df['Fuel Type'].isin(['Petrol and electric hybrid', 'Electric', 'Petrol or Diesel plug-in hybrid electric', 'Diesel and electric hybrid'])]
 
+    # Return DataFrame
     return df
 
 def charging_point_df(data: list[pd.DataFrame], county_names: list) -> pd.DataFrame:
-    """Combines multiple DataFrames containing charging point data into a single DataFrame.
+    """Combines multiple tables containing charging points into a single DataFrame.
 
     Args:
-        data: A list of pandas DataFrames, each containing charging point data.
+        data: A list of pandas DataFrames, each containing charging point data from each pdf page.
 
     Returns:
         A combined pandas DataFrame with columns: 'Country', 'County', 'Latitude', 'Longitude'.
@@ -100,7 +102,7 @@ def charging_point_df(data: list[pd.DataFrame], county_names: list) -> pd.DataFr
         # convert the columns to string 
         table_data = table_data.astype(str)
         
-        # Apply the cutom functions to transform data
+        # Apply the custom functions to transform data
         table_data[1] = table_data[1].apply(replace_county)
         table_data[2] = table_data[2].apply(value_split)
 
@@ -114,6 +116,9 @@ def charging_point_df(data: list[pd.DataFrame], county_names: list) -> pd.DataFr
     # Convert column types
     combined_data[['Country', 'County']] = combined_data[['Country', 'County']].astype(str)
     combined_data[['Latitude', 'Longitude']] = combined_data[['Latitude', 'Longitude']].astype(float)
+
+    # Filter the DataFrame to include only 'County' - RoI
     combined_data = combined_data[combined_data['Country'] == "RoI"]
 
+    # Return the final DataFrame
     return combined_data
