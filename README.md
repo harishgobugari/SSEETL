@@ -6,18 +6,18 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 ## Project Structure
 
-- **input**: This folder contains sample input files for reference, they are not used in the ETL process. Instead we extracted the input data directly from the websites.
-- **output**: Processed data is saved as csv files within this folder upon successful ETL completion.
-- **etl**: All ETL scripts and associated code are contained in this directory.
-- **tests**: Includes test cases used before loading step.
-- **etl.py**: This is entry point to entire process.
-- **requirements.txt**: Contains packages used in the project.
+- `input`: This folder contains sample input files for reference, they are not used in the ETL process. Instead we extracted the input data directly from the websites.
+- `output`: Processed data is saved as csv files within this folder upon successful ETL completion.
+- `etl`: All ETL scripts and associated code are contained in this directory.
+- `tests`: Includes test cases used before loading step.
+- `etl.py`: This is entry point to entire process.
+- `requirements.txt`: Contains packages used in the project.
 
 ## ETL Process
 
 ### Starting 
 
-#### etl.py
+`etl.py`
 
 - This file serves as the entry point for the ETL process.
 
@@ -40,7 +40,7 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 ### Data Extraction
 
-#### extract.py
+`extract.py`
 
 - **Functions**:
   - Retrieve raw vehicle data from the REST API.
@@ -51,7 +51,7 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 ### Data Transformation
 
-#### transform.py
+`transform.py`
 
 ##### Vehicle Data
 
@@ -85,7 +85,7 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 ### Test Cases
 
-#### test_data.py
+`test_data.py`
 
 - Includes sample tests to ensure data integrity:
   - Verify presence of expected values in specific columns.
@@ -95,24 +95,24 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
   
   These tests ensure data quality and consistency before further processing or analysis.
 
-### Data Loading
+### Data Loading:
 
-#### load.py
+`load.py`
 
 - After successful test case validation, cleaned and transformed DataFrames are loaded into CSV files in the output folder.
 - These output files serve as inputs for downstream analysis in tools like PowerBI.
 
 ## CI/CD 
 
-- This project uses GitHub for managing different versions of the code and GitHub Actions for automated deployment. There are three main environments set up: DEV, UAT, and PROD. 
+- This project uses GitHub for managing different versions of the code and GitHub Actions for automated deployment. There are three main environments set up: `DEV`, `UAT`, and `PROD`. 
 
-- When code changes are pushed to the main branch, the testing stage begins and installs the required packages from `requirements.txt`. Since we run test cases before loading process, no test cases are included in the deployment to dev stage. 
+- When code changes are pushed to the main branch, the `test` stage begins and installs the required packages from `requirements.txt`. Since we run test cases before loading process, no test cases are included in the deployment to dev stage. 
 
-- Once the testing stage completes, the deployment to dev stage is triggered. After a successful deployment to the development, the deployment process to the UAT environment begins automatically one minute later. 
+- Once the test stage completes, the deployment to `dev` stage is triggered. After a successful deployment to the development, the deployment process to the `uat` environment begins automatically one minute later. 
 
-- For the production environment, deployment happens only after deployment to UAT is completed successfully. However, this deployment to production requires manual approval before it can proceed.
+- For the `prod` environment, deployment happens only after deployment to UAT is completed successfully. However, this deployment to production requires manual approval before it can proceed.
 
-- The cicd.yml is used to trigger simple CI/CD is located in .github/workflows folder. This file can be configured to perform deployments to different cloud services/resources.
+- The `cicd.yml` is used to trigger simple CI/CD is located in `.github/workflows` folder. This file can be configured to perform deployments to different cloud services/resources.
 
 ### Best practices include:
 
