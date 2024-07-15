@@ -4,7 +4,7 @@ from .transform import charging_points_df, population_df, vehicles_df
 from tests.test_data import test_charging_points_df, test_population_df,test_vehicle_df
 
 
-def load_vehicle_data_to_csv(data_url:str,file_path:str):
+def load_vehicles(data_url:str,file_path:str):
     
     # Vehicle data
     logging.info("Extracting vehicle raw data...")
@@ -27,7 +27,7 @@ def load_vehicle_data_to_csv(data_url:str,file_path:str):
     
     logging.info(f"Vehicle data loaded into csv file: {file_path}")
 
-def load_charging_points_data_to_csv(data_url:str,county_url:str,file_path:str):
+def load_charging_points(data_url:str,county_url:str,file_path:str):
     
     # county names
     county_name = extract_county(url=county_url)
@@ -51,7 +51,7 @@ def load_charging_points_data_to_csv(data_url:str,county_url:str,file_path:str):
     
     logging.info(f"Charging points loaded into csv file: {file_path}")
 
-def load_population_data_to_csv(data_url:str,file_path:str):
+def load_population(data_url:str,file_path:str):
     
     # population data
     logging.info("Extracting population raw data...")
