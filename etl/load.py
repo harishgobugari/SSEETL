@@ -9,9 +9,12 @@ def load_vehicle_data_to_csv(data_url:str,file_path:str):
     # Vehicle data
     logging.info("Extracting vehicle raw data...")
     raw_vehicle_data = extract_vehicles(url=data_url)
+    logging.info("Extracting vehicle raw data completed.")
 
     logging.info("Transforming vehicle raw data...")
     vehicles_data_df = vehicles_df(data=raw_vehicle_data)
+    logging.info("Transforming vehicle raw data completed.")
+
     
     # test cases
     test_vehicle_df(df=vehicles_data_df)
@@ -32,9 +35,11 @@ def load_charging_points_data_to_csv(data_url:str,county_url:str,file_path:str):
     logging.info("Extracting charging points raw data...")
     # charging points data 
     raw_charging_points_data = extract_charging_points(file_url=data_url)
+    logging.info("Extracting charging points raw data completed.")
 
     logging.info("Transforming charging points raw data...")
     charging_data_df = charging_points_df(data=raw_charging_points_data,county_names=county_name)
+    logging.info("Transforming charging points raw data completed.")
     
     #test cases
     test_charging_points_df(df=charging_data_df,names=county_name)
@@ -51,9 +56,11 @@ def load_population_data_to_csv(data_url:str,file_path:str):
     # population data
     logging.info("Extracting population raw data...")
     raw_population_data = extract_population(url=data_url)
+    logging.info("Extracting population raw data completed.")
 
     logging.info("Transforming population raw data...")
     population_data_df = population_df(data=raw_population_data)
+    logging.info("Transforming population raw data completed.")
     
     # test cases
     test_population_df(df=population_data_df)

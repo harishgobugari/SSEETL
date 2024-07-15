@@ -1,1 +1,2 @@
-etlscripts/__pycache__/
+etl/__pycache__
+tests/__pycache__
