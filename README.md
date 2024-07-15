@@ -108,11 +108,11 @@ The goal of this project is to create an ETL pipeline for collecting and process
 
 - When code changes are pushed to the main branch, the `test` stage begins and installs the required packages from `requirements.txt`. Since we run test cases before loading process, no test cases are included in the deployment to dev stage. 
 
-- Once the test stage completes, the deployment to `dev` stage is triggered. After a successful deployment to the development, the deployment process to the `uat` environment begins automatically one minute later. 
+- Once the test stage completes, the deployment to `dev` stage is triggers. After a successful deployment to the development, the deployment process to the `uat` environment begins automatically one minute later. 
 
 - For the `prod` environment, deployment happens only after deployment to UAT is completed successfully. However, this deployment to production requires manual approval before it can proceed.
 
-- The `cicd.yml` is used to trigger simple CI/CD is located in `.github/workflows` folder. This file can be configured to perform deployments to different cloud services/resources.
+- The `cicd.yml` is used to trigger simple CI/CD is located in `.github/workflows` folder. This file can be configured to perform test cases on dummy data before deployments to different cloud services/resources.
 
 ### Best practices include:
 
