@@ -78,9 +78,9 @@ def charging_points_df(data: list[pd.DataFrame], county_names: list) -> pd.DataF
         for item in county_names:
             if value.startswith(item):
                 return item
-            elif value.startswith('Roscomm'):
+            elif value.startswith("Roscomm"):
                 return "Roscommon"
-            elif value.startswith('Westmeat'):
+            elif value.startswith("Westmeat"):
                 return "Westmeath"
         return value
     

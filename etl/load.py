@@ -38,11 +38,11 @@ def load_charging_points(data_url:str,county_url:str,file_path:str):
     logging.info("Extracting charging points raw data completed.")
 
     logging.info("Transforming charging points raw data...")
-    charging_data_df = charging_points_df(data=raw_charging_points_data,county_names=county_name)
+    charging_data_df = charging_points_df(data=raw_charging_points_data, county_names=county_name)
     logging.info("Transforming charging points raw data completed.")
     
     #test cases
-    test_charging_points_df(df=charging_data_df,names=county_name)
+    test_charging_points_df(df=charging_data_df, names=county_name)
     logging.info("All test cases are passed for the charging point data")
     
     logging.info("Loading charging points data")
