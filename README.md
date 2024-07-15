@@ -126,6 +126,6 @@ The goal of this project is to create an ETL pipeline for collecting and process
 
 ### Running the project
 
-- Install required packages from `requirements.txt` file using pip install -r requirements.txt
+- Install required packages from `requirements.txt` file using `pip install -r requirements.txt`
 
 - Run the `etl.py` file and pass `file_path` of your output folder in main function
