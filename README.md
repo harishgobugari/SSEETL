@@ -8,12 +8,20 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 - **input**: This folder contains sample input files for reference, they are not used in the ETL process. Instead we extracted the input data directly from the websites.
 - **output**: Processed data is saved as csv files within this folder upon successful ETL completion.
-- **etlscripts**: All ETL scripts and associated code are contained in this directory.
+- **etl**: All ETL scripts and associated code are contained in this directory.
+- **tests**: Includes test cases used before loading step.
+- **etl.py**: This is entry point to entire process.
 - **requirements.txt**: Contains packages used in the project.
 
 ## ETL Process
 
-### Data Sources and Extraction
+### Starting 
+
+#### etl.py
+
+- This file serves as the entry point for the ETL process.
+
+### Data Sources
 
 #### Vehicle Data
 
@@ -77,7 +85,7 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 ### Test Cases
 
-#### testcases.py
+#### test_data.py
 
 - Includes sample tests to ensure data integrity:
   - Verify presence of expected values in specific columns.
@@ -92,17 +100,19 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 #### load.py
 
 - After successful test case validation, cleaned and transformed DataFrames are loaded into CSV files in the output folder.
-- These files serve as inputs for downstream analysis in tools like PowerBI.
+- These output files serve as inputs for downstream analysis in tools like PowerBI.
 
 ## CI/CD 
 
 - This project uses GitHub for managing different versions of the code and GitHub Actions for automated deployment. There are three main environments set up: DEV, UAT, and PROD. 
 
-- When code changes are pushed to the main branch, the development workflow starts automatically. After a successful deployment to the development, the deployment process to the UAT environment begins automatically one minute later. 
+- When code changes are pushed to the main branch, the testing stage begins and installs the required packages from `requirements.txt`. Since we run test cases before loading process, no test cases are included in the deployment to dev stage. 
+
+- Once the testing stage completes, the deployment to dev stage is triggered. After a successful deployment to the development, the deployment process to the UAT environment begins automatically one minute later. 
 
 - For the production environment, deployment happens only after deployment to UAT is completed successfully. However, this deployment to production requires manual approval before it can proceed.
 
-- The main.yml is used to trigger simple CI/CD is located in .github/workflows folder. This file can be configured to perform deployments to different cloud services/resources.
+- The cicd.yml is used to trigger simple CI/CD is located in .github/workflows folder. This file can be configured to perform deployments to different cloud services/resources.
 
 ### Best practices include:
 
@@ -118,4 +128,4 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 - Install required packages from requirements.txt file using pip install -r requirements.txt
 
-- Run the main.py file in etlscripts folder and pass file_path of your output folder in main function
+- Run the etl.py file and pass 'file_path' of your output folder in main function
