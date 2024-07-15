@@ -17,7 +17,7 @@ def test_vehicle_df(df:pd.DataFrame):
   assert (df["Count"] >= 0).all(), f"All values in column 'Count' must be greater than or equal to 0"
   
   # Check if the column data type is integer
-  assert df["Count"].dtype == 'int64', f"Column 'Count' must be of integer type"
+  assert df["Count"].dtype == 'int', f"Column 'Count' must be of integer type"
 
 """
 Test Cases -> Charging data

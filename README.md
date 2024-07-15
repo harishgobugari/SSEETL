@@ -126,6 +126,6 @@ This project aims to create an ETL pipeline to extract and process vehicle data 
 
 ### Running the project
 
-- Install required packages from requirements.txt file using pip install -r requirements.txt
+- Install required packages from `requirements.txt` file using pip install -r requirements.txt
 
-- Run the etl.py file and pass 'file_path' of your output folder in main function
+- Run the `etl.py` file and pass `file_path` of your output folder in main function
