@@ -1,5 +1,5 @@
 import logging
-from load import load_charging_points_data_to_csv, load_population_data_to_csv, load_vehicle_data_to_csv
+from etl.load import load_charging_points_data_to_csv, load_population_data_to_csv, load_vehicle_data_to_csv
 
 # Configure logging to output to stdout
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')

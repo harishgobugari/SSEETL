@@ -1,5 +1,5 @@
 import pandas as pd
-from extract import find_column_with_value, value_split
+from .extract import find_column_with_value, value_split
 
 def vehicles_df(data: dict) -> pd.DataFrame:
     """Creates a pandas DataFrame from vehicle data extracted from an API response.
@@ -42,6 +42,9 @@ def vehicles_df(data: dict) -> pd.DataFrame:
 
     # Filter out the County - All licensing authorities
     df = df[df['County'] != "All licensing authorities"]
+
+     # Drop the 'Statistic' column as it is no longer needed
+    df.drop(['Statistic'], axis=1, inplace=True)
     
     # Filter rows based on column 'Fuel Type'
     df = df[df['Fuel Type'].isin(['Petrol and electric hybrid', 'Electric', 'Petrol or Diesel plug-in hybrid electric', 'Diesel and electric hybrid'])]

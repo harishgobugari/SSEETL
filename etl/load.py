@@ -1,7 +1,7 @@
 import logging
-from extract import extract_charging_points, extract_county, extract_population, extract_vehicles
-from transform import charging_points_df, population_df, vehicles_df
-from testcases import test_charging_points_df, test_population_df,test_vehicle_df
+from .extract import extract_charging_points, extract_county, extract_population, extract_vehicles
+from .transform import charging_points_df, population_df, vehicles_df
+from tests.test_data import test_charging_points_df, test_population_df,test_vehicle_df
 
 
 def load_vehicle_data_to_csv(data_url:str,file_path:str):
