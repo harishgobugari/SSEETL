@@ -44,7 +44,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Deploy to UAT
-        run: echo "Deploying to ${{ secrets.ENV_UAT }} environment"
+        run: echo "Deploying to ${{ var.ENV_UAT }} environment"
 
   deploy_prod:
     runs-on: ubuntu-latest
@@ -54,4 +54,3 @@ jobs:
       - uses: actions/checkout@v4
       - name: Deploy to Prod
         run: echo "Deploying to ${{ vars.ENV_PROD }} environment"
-
