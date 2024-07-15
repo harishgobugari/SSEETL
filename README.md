@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This project aims to create an ETL pipeline to extract and process vehicle data and EV charging point information from specific websites. The processed data is then used for analysis and to make data-driven decisions.
+The goal of this project is to create an ETL pipeline for collecting and processing vehicle, population and EV charging point data from designated online sources. This processed information will be analyzed to identify optimal locations for establishing EV charging infrastructure nationwide.
 
 ## Project Structure
 
