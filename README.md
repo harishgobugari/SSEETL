@@ -102,6 +102,57 @@ The goal of this project is to create an ETL pipeline for collecting and process
 - After successful test case validation, cleaned and transformed DataFrames are loaded into CSV files in the output folder.
 - These output files serve as inputs for downstream analysis in tools like PowerBI.
 
+
+## EV Charging Station Location Analysis
+
+### Overview
+
+The data analysis aims to pinpoint the best locations for new EV charging stations by evaluating and ranking counties based on their need for additional infrastructure. This evaluation uses a composite score, which combines several key metrics into a single value to facilitate data-driven decisions. The following factors contribute to calculating this composite score, which highlights potential areas for establishing EV infrastructure:
+
+### Factors Considered
+
+The following factors are used to calculate the composite score, which highlights potential areas for establishing EV infrastructure:
+
+1. **EV Registrations (EV Count):**
+   - Represents the total number of electric vehicles registered in each county.
+   - Higher EV registrations indicate a greater demand for charging stations.
+
+2. **Existing Charging Stations (Charging Stations Count):**
+   - Represents the total number of existing charging stations in each county.
+   - Fewer existing charging stations suggest a higher need for new infrastructure.
+
+3. **Population Density (Population Density):**
+   - Represents the number of people living per unit area in each county.
+   - Higher population density areas might have more potential users of charging stations.
+
+### Calculating the Composite Score
+
+#### Normalization
+
+Before calculating the composite score, the data is normalized to a common scale within the range [0, 1]. This normalization ensures each variable contributes equally to the analysis. After normalization, weights are assigned to each factor to reflect their relative importance in determining the need for new charging stations.
+
+**Normalization Formula:**
+
+\[ x' = \frac{x - \min(x)}{\max(x) - \min(x)} \]
+
+#### Composite Score Formula
+
+\[ \text{Composite Score} = (\text{EV Count} \times 0.4) + (\text{Charging Stations per EV} \times 0.3) + (\text{Population Density} \times 0.3) \]
+
+- **EV Count Weight (0.4):** Indicates that 40% of the composite score is based on the number of EVs.
+- **Charging Stations per EV Weight (0.3):** Indicates that 30% of the composite score is based on the ratio of charging stations to EVs.
+- **Population Density Weight (0.3):** Indicates that 30% of the composite score is based on population density.
+
+### Conclusion
+
+Counties are ranked according to their composite scores derived from the data. The analysis reveals that Dublin County tops the list with a high composite score, indicating a significant need for more charging infrastructure. The top counties recommended for new EV charging stations are:
+
+1. Dublin
+2. Cork
+3. Kildare
+4. Galway
+5. Meath
+
 ## CI/CD 
 
 - This project uses GitHub for managing different versions of the code and GitHub Actions for automated deployment. There are three main environments set up: `DEV`, `UAT`, and `PROD`. 
