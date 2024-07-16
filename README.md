@@ -133,13 +133,11 @@ Before calculating the composite score, the data is normalized to a common scale
 
 **Normalization Formula:**
 
-
 `x' = x - min(x)/max(x) - min(x)`
-
 
 #### Composite Score Formula
 
-`Composite Score} = (EV Count*0.4) + (Charging Stations *0.3) + (Population Density * 0.3)`
+`Composite Score} = (EV Count * 0.4) + (Charging Stations * 0.3) + (Population Density * 0.3)`
 
 - **EV Count Weight (0.4):** Indicates that 40% of the composite score is based on the number of EVs.
 - **Charging Stations per EV Weight (0.3):** Indicates that 30% of the composite score is based on the ratio of charging stations to EVs.
