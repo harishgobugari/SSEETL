@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +31,7 @@ jobs:
   deploy_dev:
     runs-on: ubuntu-latest
     environment: DEV
-    needs: test
+    needs: build
     steps:
       - uses: actions/checkout@v4
       - name: Deploy to Dev
