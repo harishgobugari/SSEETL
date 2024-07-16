@@ -12,6 +12,7 @@ The goal of this project is to create an ETL pipeline for collecting and process
 - `tests`: Includes test cases used before loading step.
 - `etl.py`: This is entry point to entire process.
 - `requirements.txt`: Contains packages used in the project.
+- `EVLocations.pbix`: This file includes visual representations and findings from the data analysis.
 
 ## ETL Process
 
