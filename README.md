@@ -10,15 +10,15 @@ The goal of this project is to create an ETL pipeline for collecting and process
 - `output`: Processed data is saved as csv files within this folder upon successful ETL completion.
 - `etl`: All ETL scripts and associated code are contained in this directory.
 - `tests`: Includes test cases used before loading step.
-- `etl.py`: This is entry point to entire process.
+- `main.py`: This is entry point to entire process.
 - `requirements.txt`: Contains packages used in the project.
-- `EVLocations.pbix`: This file includes visual representations and findings from the data analysis.
+- `EVChargingStations.pbix`: This file includes visual representations and findings from the data analysis.
 
 ## ETL Process
 
 ### Starting 
 
-`etl.py`
+`main.py`
 
 - This file serves as the entry point for the ETL process.
 
@@ -106,6 +106,8 @@ The goal of this project is to create an ETL pipeline for collecting and process
 
 ## EV Charging Station Location Analysis
 
+`EVChargingStations.pbix`
+
 ### Overview
 
 The data analysis aims to pinpoint the best locations for new EV charging stations by evaluating and ranking counties based on their need for additional infrastructure. This evaluation uses a composite score, which combines several key metrics into a single value to facilitate data-driven decisions. The following factors contribute to calculating this composite score, which highlights potential areas for establishing EV infrastructure:
@@ -146,13 +148,13 @@ Before calculating the composite score, the data is normalized to a common scale
 
 ### Conclusion
 
-Counties are ranked according to their composite scores derived from the data. The analysis reveals that Dublin County tops the list with a high composite score, indicating a significant need for more charging infrastructure. The top counties recommended for new EV charging stations are:
+Counties are ranked according to their composite scores derived from the data. The analysis reveals that `Dublin` County tops the list with a high composite score, indicating a significant need for more charging infrastructure. The top counties recommended for new EV charging stations are:
 
-1. Dublin
-2. Cork
-3. Kildare
-4. Galway
-5. Meath
+1. `Dublin`
+2. `Cork`
+3. `Kildare`
+4. `Galway`
+5. `Meath`
 
 ## CI/CD 
 
@@ -180,4 +182,4 @@ Counties are ranked according to their composite scores derived from the data. T
 
 - Install required packages from `requirements.txt` file using `pip install -r requirements.txt`
 
-- Run the `etl.py` file and pass `file_path` of your output folder in main function
+- Run the `main.py` file and pass `file_path` of your output folder in main function
